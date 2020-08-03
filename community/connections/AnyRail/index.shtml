@@ -33,6 +33,35 @@
     <p>For people new to JMRI, or new to PanelPro and Layout Editor,
     do   the <a href= "https://www.jmri.org/help/en/html/apps/PanelPro/GettingStarted.shtml">
     Getting Started with PanelPro</a> tutorial.</p>
+    
+    
+    
+    
+    
+    Exporting an AnyRail (6.3.1) Plan into JMRI ( 4.20) on a Raspberry Pi (3B+ or equilivant)
+
+AnyRail provides for an Export feature into JMRI.  This creates an XML ( the panel file) and a jpg file ( the background scenery ).  You save this export to a folder path of your choice.  Both files will save into this location.
+
+The xml file now creates a url path to the locations where these files are located ( on this pc ).  If both your AnyRail and JMRI programs are on the same pc, there is no problem. 
+
+The problem is when the JMRI is on another pc like the raspberry pi.  When a “load panel” is performed to bring these files into Layout Editor, the JMRI will not understand the url path identified in the xml.  It will display a “icon failure”.
+
+To solve this, be sure that you have moved the 2 files on the pc over to the raspberry pi into the JMRI_UserFiles folder.
+
+At the error message for lost icon, change the path that is shown to read – 
+preference:/file_name.jpg.  JMRI will now look into the UserFiles folder for the jpg.
+
+A more permanent solution is to edit the line in the xml ( only if you know what you are doing), to change this path assignment.  The line will become – 
+
+class="jmri.jmrit.display.configurexml.PositionableLabelXml">
+			<icon url="preference:/file_name.jpg"
+
+Each time you load your panel, the picture will be there as well.
+
+Note – It is recommend before you perform the AR Export, that you set the zoom factor in AnyRail to 1/8.  This will be the best fit for Layout Editor.
+
+
+
 
     <h2>Create the AnyRail design</h2>
     <p>Create the layout design using the AnyRail tools</p>
